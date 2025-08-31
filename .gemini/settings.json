@@ -1,0 +1,25 @@
+{
+  "$docs": "https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/configuration.md",
+  "contextFileName": "AGENTS.md",
+  "telemetry": {
+    "enabled": false,
+    "target": "local",
+    "otlpEndpoint": "",
+    "logPrompts": true
+  },
+  "coreTools": [
+    "list_directory",
+    "glob",
+    "read_file",
+    "read_many_files",
+    "write_file",
+    "replace",
+    "search_file_content",
+    "run_shell_command(ls)",
+    "run_shell_command(rm)",
+    "run_shell_command(just)",
+    "google_web_search",
+    "web_fetch",
+    "save_memory"
+  ]
+}

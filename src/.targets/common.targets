@@ -1,0 +1,47 @@
+<Project>
+  <Import Project="./analyzers.targets" />
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>13</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
+    <BackupGeneratedFilesPath>Generated_Backup</BackupGeneratedFilesPath>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Exclude the output of source generators from the compilation -->
+    <Compile Remove="$(CompilerGeneratedFilesOutputPath)/**/*.cs" />
+    <Compile Remove="$(BackupGeneratedFilesPath)/**/*.cs" />
+  </ItemGroup>
+  <Target Name="CleanSourceGeneratedFiles" BeforeTargets="BeforeBuild">
+    <!-- Remove any stale backup -->
+    <RemoveDir Directories="$(BackupGeneratedFilesPath)" Condition="Exists('$(BackupGeneratedFilesPath)')" />
+    <ItemGroup>
+      <FilesToBackup Include="$(CompilerGeneratedFilesOutputPath)\**\*" />
+    </ItemGroup>
+    <!-- Move generated files to backup -->
+    <Copy
+      SourceFiles="@(FilesToBackup)"
+      DestinationFiles="@(FilesToBackup-&gt;'$(BackupGeneratedFilesPath)\%(RecursiveDir)%(Filename)%(Extension)')"
+      Condition="Exists('$(CompilerGeneratedFilesOutputPath)')"
+    />
+    <!-- Clean up directory -->
+    <RemoveDir Directories="$(CompilerGeneratedFilesOutputPath)" />
+  </Target>
+  <Target Name="RestoreGeneratedFiles" AfterTargets="AfterBuild">
+    <ItemGroup>
+      <NewGeneratedFiles Include="$(CompilerGeneratedFilesOutputPath)\**\*" />
+      <BackupFiles Include="$(BackupGeneratedFilesPath)\**\*" />
+    </ItemGroup>
+    <!-- Restore if no new generated files were produced, otherwise delete -->
+    <Copy
+      SourceFiles="@(BackupFiles)"
+      DestinationFiles="@(BackupFiles-&gt;'$(CompilerGeneratedFilesOutputPath)\%(RecursiveDir)%(Filename)%(Extension)')"
+      Condition="'@(NewGeneratedFiles)' == '' AND Exists('$(BackupGeneratedFilesPath)')"
+    />
+    <!-- Clean up backup -->
+    <RemoveDir Directories="$(BackupGeneratedFilesPath)" />
+  </Target>
+</Project>

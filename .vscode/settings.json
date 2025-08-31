@@ -1,0 +1,6 @@
+{
+  "remote.autoForwardPorts": false,
+  "files.associations": {
+    "*.aiexclude": "ignore"
+  }
+}

@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiKnowledgeExchange", "AiKnowledgeExchange\AiKnowledgeExchange.csproj", "{F4E04BD8-D84A-4052-B8A7-9D8C73DD519E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".targets", ".targets", "{69061212-D219-4BB0-ABED-EDE1B629C107}"
+	ProjectSection(SolutionItems) = preProject
+		.targets\common.targets = .targets\common.targets
+		.targets\tests.targets = .targets\tests.targets
+		.targets\analyzers.targets = .targets\analyzers.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AiKnowledgeExchange.Tests", "AiKnowledgeExchange.Tests\AiKnowledgeExchange.Tests.csproj", "{A680A656-CB12-4FC3-8E22-CBBF108286C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".misc", ".misc", "{1B85A887-140E-4019-80F0-929530247951}"
+	ProjectSection(SolutionItems) = preProject
+		..\AGENTS.md = ..\AGENTS.md
+		..\.editorconfig = ..\.editorconfig
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4E04BD8-D84A-4052-B8A7-9D8C73DD519E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4E04BD8-D84A-4052-B8A7-9D8C73DD519E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4E04BD8-D84A-4052-B8A7-9D8C73DD519E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4E04BD8-D84A-4052-B8A7-9D8C73DD519E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A680A656-CB12-4FC3-8E22-CBBF108286C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A680A656-CB12-4FC3-8E22-CBBF108286C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A680A656-CB12-4FC3-8E22-CBBF108286C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A680A656-CB12-4FC3-8E22-CBBF108286C9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

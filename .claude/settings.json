@@ -1,0 +1,9 @@
+{
+  "hooks": {
+    "tool_use": {
+      "bash": {
+        "pre": "if [[ \"$CLAUDE_TOOL_USE_BASH_COMMAND\" == dotnet* ]]; then echo 'Error: dotnet commands not allowed. Use these just commands instead:' >&2; echo '  just build     (instead of dotnet build)' >&2; echo '  just test      (instead of dotnet test)' >&2; echo '  just run <args> (instead of dotnet run)' >&2; exit 1; fi"
+      }
+    }
+  }
+}

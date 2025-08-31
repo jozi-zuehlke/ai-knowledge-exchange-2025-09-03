@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+mkdir -p ~/.opencode
+
+podman run --rm -it \
+  -v ~/.opencode:"/home/$(whoami)/.local/share/opencode" \
+  -v ~/.opencode:"/home/$(whoami)/.config/opencode" \
+  --mount=type=tmpfs,tmpfs-size=1G,destination=/tmpfs \
+  -v "$PWD":/work \
+  -w /work \
+  --userns=keep-id \
+  -e GEMINI_API_KEY="$GEMINI_API_KEY" \
+  -e AI_KNOWLEDGE_EXCHANGE_TEST_DATA_DIR="/tmpfs/test-data" \
+  ai-knowledge-exchange-agent-opencode-cli $@

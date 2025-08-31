@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+mkdir -p ~/.claude
+
+if [ ! -f "$PWD"/.claude/.claude.json ]; then
+  echo "{}" > "$PWD"/.claude/.claude.json
+fi
+
+podman run --rm -it \
+  -v ~/.claude:"/home/$(whoami)/.claude" \
+  -v "$PWD"/.claude/.claude.json:/home/$(whoami)/.claude.json \
+  --mount=type=tmpfs,tmpfs-size=1G,destination=/tmpfs \
+  -v "$PWD":/work \
+  -w /work \
+  --userns=keep-id \
+  -e AI_KNOWLEDGE_EXCHANGE_TEST_DATA_DIR="/tmpfs/test-data" \
+  ai-knowledge-exchange-agent-claude-code --dangerously-skip-permissions $@

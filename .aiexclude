@@ -1,0 +1,13 @@
+# the file is too big for the context, and any violations to the code style will be reported by the build anyways
+/.editorconfig
+
+/.bin
+/.claude
+/.config
+/.gemini
+/.tools
+/.vscode
+/opencode.json
+
+# some files are confusing the agent, and are not critical to its understanding, so we ignore them
+/src/*Tests/GlobalHooks.cs

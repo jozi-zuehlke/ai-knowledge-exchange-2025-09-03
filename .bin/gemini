@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+mkdir -p ~/.gemini
+
+podman run --rm -it \
+  -v ~/.gemini:"/home/$(whoami)/.gemini" \
+  --mount=type=tmpfs,tmpfs-size=1G,destination=/tmpfs \
+  -v "$PWD":/work \
+  -w /work \
+  --userns=keep-id \
+  -e GEMINI_API_KEY="$GEMINI_API_KEY" \
+  -e AI_KNOWLEDGE_EXCHANGE_TEST_DATA_DIR="/tmpfs/test-data" \
+  ai-knowledge-exchange-agent-gemini-cli --yolo $@
