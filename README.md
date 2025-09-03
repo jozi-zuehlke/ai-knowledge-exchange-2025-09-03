@@ -1,5 +1,7 @@
 # AI knowledge exchange 2025-09-03
 
+A showcase of my agentic coding setup (mostly for, but not limited to, dotnet development)
+
 
 
 
@@ -104,7 +106,7 @@
   - there are 3 parallel tracks today
   - clients demand efficiency gains
 - rapidly developing field
-  - the tool are evolving
+  - the tools are evolving
   - the usage patterns are evolving
   - we need to iterate just as rapdily and exchange experiences and ideas
 
@@ -395,8 +397,8 @@ I claim neither correctness nor completeness nor originality of thought
   - Meziantou
   - StyleCop
   - SonarAnalyzers
-- CSharpier
-- Roslynator
+- CSharpier (tool and IDE plugin)
+- Roslynator CLI
 
 
 
