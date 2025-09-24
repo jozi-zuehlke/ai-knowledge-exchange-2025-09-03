@@ -1,4 +1,4 @@
-# WSL FileSystem Git Sync
+# AI knowledge exchange
 
 ## Overview
 
